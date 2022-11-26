@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>标签外挂+Gallery图库</title>
+      <link href="/2022/11/26/hello-world2/"/>
+      <url>/2022/11/26/hello-world2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="标签外挂-Note"><a href="#标签外挂-Note" class="headerlink" title="标签外挂 Note"></a>标签外挂 Note</h1><h2 id="simple"><a href="#simple" class="headerlink" title="simple"></a>simple</h2><div class="note simple"><p>默認 提示塊標籤</p></div><div class="note default simple"><p>default 提示塊標籤</p></div><div class="note primary simple"><p>primary 提示塊標籤</p></div><div class="note success simple"><p>success 提示塊標籤</p></div><div class="note info simple"><p>info 提示塊標籤</p></div><div class="note warning simple"><p>warning 提示塊標籤</p></div><div class="note danger simple"><p>danger 提示塊標籤</p></div><h2 id="modern"><a href="#modern" class="headerlink" title="modern"></a>modern</h2><div class="note modern"><p>默認 提示塊標籤</p></div><div class="note default modern"><p>default 提示塊標籤</p></div><div class="note primary modern"><p>primary 提示塊標籤</p></div><div class="note success modern"><p>success 提示塊標籤</p></div><div class="note info modern"><p>info 提示塊標籤</p></div><div class="note warning modern"><p>warning 提示塊標籤</p></div><div class="note danger modern"><p>danger 提示塊標籤</p></div><h2 id="flat"><a href="#flat" class="headerlink" title="flat"></a>flat</h2><div class="note flat"><p>默認 提示塊標籤</p></div><div class="note default flat"><p>default 提示塊標籤</p></div><div class="note primary flat"><p>primary 提示塊標籤</p></div><div class="note success flat"><p>success 提示塊標籤</p></div><div class="note info flat"><p>info 提示塊標籤</p></div><div class="note warning flat"><p>warning 提示塊標籤</p></div><div class="note danger flat"><p>danger 提示塊標籤</p></div><h2 id="disabled"><a href="#disabled" class="headerlink" title="disabled"></a>disabled</h2><div class="note disabled"><p>默認 提示塊標籤</p></div><div class="note default disabled"><p>default 提示塊標籤</p></div><div class="note primary disabled"><p>primary 提示塊標籤</p></div><div class="note success disabled"><p>success 提示塊標籤</p></div><div class="note info disabled"><p>info 提示塊標籤</p></div><div class="note warning disabled"><p>warning 提示塊標籤</p></div><div class="note danger disabled"><p>danger 提示塊標籤</p></div><h2 id="no-icon"><a href="#no-icon" class="headerlink" title="no-icon"></a>no-icon</h2><div class="note no-icon flat"><p>默認 提示塊標籤</p></div><div class="note default no-icon flat"><p>default 提示塊標籤</p></div><div class="note primary no-icon flat"><p>primary 提示塊標籤</p></div><div class="note success no-icon flat"><p>success 提示塊標籤</p></div><div class="note info no-icon flat"><p>info 提示塊標籤</p></div><div class="note warning no-icon flat"><p>warning 提示塊標籤</p></div><div class="note danger no-icon flat"><p>danger 提示塊標籤</p></div><h1 id="Gallery"><a href="#Gallery" class="headerlink" title="Gallery"></a>Gallery</h1><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;gallery-group-main&quot;</span>&gt;</span></span></span><br><span class="line">&#123;% galleryGroup name description link img-url %&#125;</span><br><span class="line">&#123;% galleryGroup name description link img-url %&#125;</span><br><span class="line">&#123;% galleryGroup name description link img-url %&#125;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure><ul><li>name：圖庫名字</li><li>description：圖庫描述</li><li>link：連接到對應相冊的地址</li><li>img-url：圖庫封面的地址</li></ul><div class="gallery-group-main">  <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/11/10/T7Mu8Aod3egmC4Q.png' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">壁紙</div>  <p>收藏的一些壁紙</p>  <a href='/Gallery/wallpaper'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/12/25/8t97aVlp4hgyBGu.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">漫威</div>  <p>關於漫威的圖片</p>  <a href='/Gallery/marvel'></a>  </figcaption>  </figure>    <figure class="gallery-group">  <img class="gallery-group-img no-lightbox" src='https://i.loli.net/2019/12/25/hOqbQ3BIwa6KWpo.jpg' alt="Group Image Gallery">  <figcaption>  <div class="gallery-group-name">OH MY GIRL</div>  <p>關於OH MY GIRL的圖片</p>  <a href='/Gallery/ohmygirl'></a>  </figcaption>  </figure>  </div>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2022/11/18/hello-world/"/>
       <url>/2022/11/18/hello-world/</url>
@@ -17,13 +30,25 @@
     
     
     <entry>
-      <title>Copyright-beautify</title>
-      <link href="/2021/03/02/20221118-article1/"/>
-      <url>/2021/03/02/20221118-article1/</url>
+      <title>我的第一篇文章</title>
+      <link href="/2021/03/02/20221126-xxx/"/>
+      <url>/2021/03/02/20221126-xxx/</url>
       
-        <content type="html"><![CDATA[<h2 id="This-is-an-article"><a href="#This-is-an-article" class="headerlink" title="This is an article."></a>This is an article.</h2><div id="aplayer-oSEOhviA" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="4895239160" data-server="netease" data-type="playlist" data-mode="random" data-autoplay="false" data-listmaxheight="340px" data-preload="auto" data-theme="#e3f2f5" data-volume="0.4" mutex="true"></div>]]></content>
+        <content type="html"><![CDATA[<h2 id="This-is-an-article"><a href="#This-is-an-article" class="headerlink" title="This is an article."></a>This is an article.</h2><div id="aplayer-oSEO···········hviA" class="aplayer aplayer-tag-marker meting-tag-marker" data-id="4895239160" data-server="netease" data-type="playlist" data-mode="random" data-autoplay="false" data-listmaxheight="340px" data-preload="auto" data-theme="#e3f2f5" data-volume="0.4" mutex="true"></div>]]></content>
       
       
+      <categories>
+          
+          <category> 目录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 标签 </tag>
+            
+        </tags>
       
     </entry>
     
