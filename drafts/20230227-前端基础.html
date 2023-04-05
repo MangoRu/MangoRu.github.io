@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>前端基础 | MANGOのBlog</title><meta name="author" content="Mango Ru"><meta name="copyright" content="Mango Ru"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="HTTP&#x2F;HTML&#x2F;浏览器讲一下http和httpsTCP三次握手客户端C和服务端S都需要直到各自可收发，因此需要三次握手。  第一次握手：S只可以确认 自己可以接受C发送的报文段 第二次握手：C可以确认S收到了自己发送的报文段，且可以确认自己可以接受S发送的报文段 第三次握手：S可以确认C收到了自己发送的报文段  TCP和UDP区别WebSocket的实现和应用HTTP请求的">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端基础">
+<meta property="og:url" content="https://www.mangodb.site/drafts/20230227-%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80.html">
+<meta property="og:site_name" content="MANGOのBlog">
+<meta property="og:description" content="HTTP&#x2F;HTML&#x2F;浏览器讲一下http和httpsTCP三次握手客户端C和服务端S都需要直到各自可收发，因此需要三次握手。  第一次握手：S只可以确认 自己可以接受C发送的报文段 第二次握手：C可以确认S收到了自己发送的报文段，且可以确认自己可以接受S发送的报文段 第三次握手：S可以确认C收到了自己发送的报文段  TCP和UDP区别WebSocket的实现和应用HTTP请求的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.mangodb.site/images/article/default_bg.png">
+<meta property="article:published_time" content="2023-02-27T15:15:00.000Z">
+<meta property="article:modified_time" content="2023-03-06T08:40:20.447Z">
+<meta property="article:author" content="Mango Ru">
+<meta property="article:tag" content="Web前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.mangodb.site/images/article/default_bg.png"><link rel="shortcut icon" href="/img/mango.png"><link rel="canonical" href="https://www.mangodb.site/drafts/20230227-%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Mango Ru","link":"链接: ","source":"来源: MANGOのBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前端基础',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-03-06 16:40:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar/joy.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home#"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="MANGOのBlog"><span class="site-name">MANGOのBlog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home#"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">前端基础</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h2 id="HTTP-x2F-HTML-x2F-浏览器"><a href="#HTTP-x2F-HTML-x2F-浏览器" class="headerlink" title="HTTP&#x2F;HTML&#x2F;浏览器"></a>HTTP&#x2F;HTML&#x2F;浏览器</h2><h3 id="讲一下http和https"><a href="#讲一下http和https" class="headerlink" title="讲一下http和https"></a>讲一下http和https</h3><h3 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h3><p>客户端C和服务端S都需要直到各自可收发，因此需要三次握手。</p>
+<ul>
+<li>第一次握手：S只可以确认 自己可以接受C发送的报文段</li>
+<li>第二次握手：C可以确认S收到了自己发送的报文段，且可以确认自己可以接受S发送的报文段</li>
+<li>第三次握手：S可以确认C收到了自己发送的报文段</li>
+</ul>
+<h3 id="TCP和UDP区别"><a href="#TCP和UDP区别" class="headerlink" title="TCP和UDP区别"></a>TCP和UDP区别</h3><h3 id="WebSocket的实现和应用"><a href="#WebSocket的实现和应用" class="headerlink" title="WebSocket的实现和应用"></a>WebSocket的实现和应用</h3><h3 id="HTTP请求的方式，HEAD方式"><a href="#HTTP请求的方式，HEAD方式" class="headerlink" title="HTTP请求的方式，HEAD方式"></a>HTTP请求的方式，HEAD方式</h3><h3 id="http-常用请求头"><a href="#http-常用请求头" class="headerlink" title="http 常用请求头"></a>http 常用请求头</h3><h3 id="一个图片url访问后直接下载如何实现？"><a href="#一个图片url访问后直接下载如何实现？" class="headerlink" title="一个图片url访问后直接下载如何实现？"></a>一个图片url访问后直接下载如何实现？</h3><h3 id="说一下Web-Quality（无障碍）"><a href="#说一下Web-Quality（无障碍）" class="headerlink" title="说一下Web Quality（无障碍）"></a>说一下Web Quality（无障碍）</h3><h3 id="几个很实用的BOM属性对象方法？"><a href="#几个很实用的BOM属性对象方法？" class="headerlink" title="几个很实用的BOM属性对象方法？"></a>几个很实用的BOM属性对象方法？</h3><p><code>BOM</code>：Browser Object Model，浏览器对象模型，独立于内容而与浏览器窗口进行交互的对象，核心对象是 window。</p>
+<p>常用的BOM属性包括location对象、history对象、navigator对象、document对象、screen对象</p>
+<p>&#x3D;&#x3D;<strong>DOM与BOM区别</strong>&#x3D;&#x3D;</p>
+<table>
+<thead>
+<tr>
+<th>DOM</th>
+<th>BOM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文档对象模型</td>
+<td>浏览器对象模型，包含DOM<br>document 、location 、navigation 、history 、screen</td>
+</tr>
+<tr>
+<td>文档 当做 对象</td>
+<td>浏览器 当做 对象</td>
+</tr>
+<tr>
+<td>DOM的顶级对象是document</td>
+<td>BOM的顶级对象是window</td>
+</tr>
+<tr>
+<td>DOM学习操作页面元素</td>
+<td>BOM学习浏览器窗口交互的一些对象</td>
+</tr>
+<tr>
+<td>DOM是W3C规范</td>
+<td>BOM是浏览器厂商在各自浏览器上定义的，兼容性差</td>
+</tr>
+</tbody></table>
+<p><strong>BOM属性对象</strong>：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>location</td>
+<td>location.href 返回或设置当前文档URL<br>location.search 返回URL中的查询字符串部分<br/>location.hash 返回URL#后的内容，无则返回空<br/>location.host 返回域名部分<br/>location.hostname 主域名<br/>location.pathname 域名后的部分<br/>location.port 端口<br/>location.protocol 协议<br>location.assign<br>location.replace<br>location.reload()</td>
+</tr>
+<tr>
+<td>history</td>
+<td>history.go() 前进或后退指定的页面数<br>history.back() 后退一页<br>history.forward() 前进一页</td>
+</tr>
+<tr>
+<td>navigator</td>
+<td>navigator.userAgent – 返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串 <br>navigator.cookieEnabled – 返回浏览器是否支持(启用)cookie</td>
+</tr>
+</tbody></table>
+<h3 id="HTML5-drag-api"><a href="#HTML5-drag-api" class="headerlink" title="HTML5 drag api"></a>HTML5 drag api</h3><h3 id="http2-0"><a href="#http2-0" class="headerlink" title="http2.0"></a>http2.0</h3><h3 id="介绍知道的-http-返回的状态码；400、401、403状态码"><a href="#介绍知道的-http-返回的状态码；400、401、403状态码" class="headerlink" title="介绍知道的 http 返回的状态码；400、401、403状态码"></a>介绍知道的 http 返回的状态码；400、401、403状态码</h3><ul>
+<li>400 请求无效，格式数据问题</li>
+<li>401 请求需用户验证</li>
+<li>403 服务器已得到请求，但拒绝执行</li>
+</ul>
+<h3 id="fetch-发送-2-次请求的原因"><a href="#fetch-发送-2-次请求的原因" class="headerlink" title="fetch 发送 2 次请求的原因"></a>fetch 发送 2 次请求的原因</h3><h3 id="Cookie、sessionStorage、localStorage-的区别"><a href="#Cookie、sessionStorage、localStorage-的区别" class="headerlink" title="Cookie、sessionStorage、localStorage 的区别"></a>Cookie、sessionStorage、localStorage 的区别</h3><p>共同点：都是保存在浏览器端，并且是同源的</p>
+<h3 id="cookie-session-区别"><a href="#cookie-session-区别" class="headerlink" title="cookie session 区别"></a>cookie session 区别</h3><h3 id="web-worker"><a href="#web-worker" class="headerlink" title="web worker"></a>web worker</h3><h3 id="iframe-是什么？有什么缺点？"><a href="#iframe-是什么？有什么缺点？" class="headerlink" title="iframe 是什么？有什么缺点？"></a>iframe 是什么？有什么缺点？</h3><p>定义：iframe 元素会创建包含另一个文档的内联框架</p>
+<ul>
+<li>提示：可以将提示文字放在<iframe></iframe>之间，来提示某些不支持 iframe 的浏览器。<br>缺点：<br>会阻塞主页面的 onload 事件<br>搜索引擎无法解读这种页面，不利于 SEO<br>iframe 和主页面共享连接池，而浏览器对相同区域有限制所以会影响性能。</li>
+</ul>
+<h3 id="Doctype-作用-严格模式与混杂模式如何区分？它们有何意义"><a href="#Doctype-作用-严格模式与混杂模式如何区分？它们有何意义" class="headerlink" title="Doctype 作用?严格模式与混杂模式如何区分？它们有何意义?"></a>Doctype 作用?严格模式与混杂模式如何区分？它们有何意义?</h3><h3 id="Cookie-如何防范-XSS-攻击"><a href="#Cookie-如何防范-XSS-攻击" class="headerlink" title="Cookie 如何防范 XSS 攻击"></a>Cookie 如何防范 XSS 攻击</h3><h3 id="Cookie-和-session-的区别"><a href="#Cookie-和-session-的区别" class="headerlink" title="Cookie 和 session 的区别"></a>Cookie 和 session 的区别</h3><h3 id="一句话概括-RESTFUL"><a href="#一句话概括-RESTFUL" class="headerlink" title="一句话概括 RESTFUL.."></a>一句话概括 RESTFUL..</h3><h3 id="讲讲-viewport-和移动端布局"><a href="#讲讲-viewport-和移动端布局" class="headerlink" title="讲讲 viewport 和移动端布局"></a><img src="/img.png" alt="img.png">讲讲 viewport 和移动端布局</h3><p><a target="_blank" rel="noopener" href="https://github.com/forthealllight/blog/issues/13">响应式布局</a></p>
+<h3 id="click-在-ios-上有-300ms-延迟，原因及如何解决？"><a href="#click-在-ios-上有-300ms-延迟，原因及如何解决？" class="headerlink" title="click 在 ios 上有 300ms 延迟，原因及如何解决？"></a>click 在 ios 上有 300ms 延迟，原因及如何解决？</h3><h3 id="addEventListener-参数"><a href="#addEventListener-参数" class="headerlink" title="addEventListener 参数"></a>addEventListener 参数</h3><h3 id="强，协商缓存"><a href="#强，协商缓存" class="headerlink" title="强，协商缓存"></a>强，协商缓存</h3><h3 id="前端优化"><a href="#前端优化" class="headerlink" title="前端优化"></a>前端优化</h3><p>降低请求量：合并资源，减少 HTTP 请求数，minify &#x2F; gzip 压缩，webP，lazyLoad。<br>加快请求速度：预解析 DNS，减少域名数，并行加载，CDN 分发。<br>缓存：HTTP 协议缓存请求，离线缓存 manifest，离线数据缓存 localStorage。<br>渲染：JS&#x2F;CSS 优化，加载顺序，服务端渲染，pipeline。</p>
+<h3 id="GET-和-POST-的区别"><a href="#GET-和-POST-的区别" class="headerlink" title="GET 和 POST 的区别"></a>GET 和 POST 的区别</h3><h3 id="HTTP-支持的方法"><a href="#HTTP-支持的方法" class="headerlink" title="HTTP 支持的方法"></a>HTTP 支持的方法</h3><h3 id="csrf-和-xss-的网络攻击及防范"><a href="#csrf-和-xss-的网络攻击及防范" class="headerlink" title="csrf 和 xss 的网络攻击及防范"></a>csrf 和 xss 的网络攻击及防范</h3><h3 id="怎么看网站的性能如何"><a href="#怎么看网站的性能如何" class="headerlink" title="怎么看网站的性能如何"></a>怎么看网站的性能如何</h3><h3 id="HTML5-和-CSS3-用的多吗？你了解它们的新属性吗？有在项目中用过吗？"><a href="#HTML5-和-CSS3-用的多吗？你了解它们的新属性吗？有在项目中用过吗？" class="headerlink" title="HTML5 和 CSS3 用的多吗？你了解它们的新属性吗？有在项目中用过吗？"></a>HTML5 和 CSS3 用的多吗？你了解它们的新属性吗？有在项目中用过吗？</h3><p>html5：<br>1）标签增删<br>8 个语义元素 header section footer aside nav main article figure<br>内容元素 mark 高亮 progress 进度<br>新的表单控件 calander date time email url search<br>新的 input 类型 color date datetime datetime-local email<br>移除过时标签 big font frame frameset<br>2）canvas 绘图，支持内联 SVG。支持 MathML<br>3）多媒体 audio video source embed track<br>4）本地离线存储，把需要离线存储在本地的文件列在一个 manifest 配置文件<br>5）web 存储。localStorage、SessionStorage</p>
+<p>css3：<br>CSS3 边框如 border-radius，box-shadow 等；CSS3 背景如 background-size，<br>background-origin 等；CSS3 2D，3D 转换如 transform 等；CSS3 动画如 animation<br>等。 参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/xkweb/p/5862612.html">https://www.cnblogs.com/xkweb/p/5862612.html</a></p>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="link-标签和-import-标签的区别"><a href="#link-标签和-import-标签的区别" class="headerlink" title="link 标签和 import 标签的区别"></a>link 标签和 import 标签的区别</h3><h3 id="transition-和-animation-的区别"><a href="#transition-和-animation-的区别" class="headerlink" title="transition 和 animation 的区别"></a>transition 和 animation 的区别</h3><h3 id="xxx"><a href="#xxx" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-1"><a href="#xxx-1" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-2"><a href="#xxx-2" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-3"><a href="#xxx-3" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-4"><a href="#xxx-4" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-5"><a href="#xxx-5" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-6"><a href="#xxx-6" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-7"><a href="#xxx-7" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-8"><a href="#xxx-8" class="headerlink" title="xxx"></a>xxx</h3><h3 id="xxx-9"><a href="#xxx-9" class="headerlink" title="xxx"></a>xxx</h3></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/avatar/joy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mango Ru</div><div class="author-info__description">日出而作，日落而息</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/MangoRu" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_40618816?spm=1000.2115.3001.5343" target="_blank" title="CSDN"><i class="fa-sharp fa-solid fa-c"></i></a><a class="social-icon" href="mailto:1596214166@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/2fe3da.html" title="使用Hexo+Butterfly+Github+Vercel搭建个人博客"><img src="/images/article/top_img/hexo-Website.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用Hexo+Butterfly+Github+Vercel搭建个人博客"/></a><div class="content"><a class="title" href="/posts/2fe3da.html" title="使用Hexo+Butterfly+Github+Vercel搭建个人博客">使用Hexo+Butterfly+Github+Vercel搭建个人博客</a><time datetime="2023-04-05T12:28:47.624Z" title="发表于 2023-04-05 20:28:47">2023-04-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Hexo/"><span class="card-category-list-name">Hexo</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/hexo/" style="font-size: 1.1em; color: #999">hexo</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">1.8k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-04-05T13:24:22.597Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Mango Ru</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
