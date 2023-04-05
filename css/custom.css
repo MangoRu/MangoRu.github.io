@@ -1,3 +1,4 @@
+/* 以下是一图流的配置 */
 /* 页脚与头图透明 */
 #footer {
     background: transparent !important;
@@ -21,6 +22,7 @@
 [data-theme="dark"] #page-header::before {
     background: transparent !important;
 }
+/*---------------------------------------------------------*/
 
 /* 文章页H1-H6图标样式效果 */
 /* 控制风车转动速度 4s那里可以自己调节快慢 */
