@@ -3081,6 +3081,14 @@ h1.page-title + .tag-cloud-list {
   -ms-flex-direction: column;
   flex-direction: column;
 }
+.page .card-recent-post {
+  -webkit-box-ordinal-group: 2;
+  -moz-box-ordinal-group: 2;
+  -o-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+}
 .page .card-tags {
   -webkit-box-ordinal-group: 1;
   -moz-box-ordinal-group: 1;
@@ -3090,12 +3098,12 @@ h1.page-title + .tag-cloud-list {
   order: 1;
 }
 .page .card-webinfo {
-  -webkit-box-ordinal-group: 2;
-  -moz-box-ordinal-group: 2;
-  -o-box-ordinal-group: 2;
-  -ms-flex-order: 2;
-  -webkit-order: 2;
-  order: 2;
+  -webkit-box-ordinal-group: 4;
+  -moz-box-ordinal-group: 4;
+  -o-box-ordinal-group: 4;
+  -ms-flex-order: 4;
+  -webkit-order: 4;
+  order: 4;
 }
 @-moz-keyframes more-btn-move {
   0%, 100% {
